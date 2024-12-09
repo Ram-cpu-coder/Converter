@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { calculateLength } from "./helpers/calculateLength";
 
 const LengthConverter = () => {
-  const [fromLength, setFromLength] = useState("cm");
-  const [toLength, setToLength] = useState("m");
+  const [fromLength, setFromLength] = useState("m");
+  const [toLength, setToLength] = useState("cm");
   const [inputValue, setInputValue] = useState("");
   const [result, setResult] = useState("");
 
@@ -31,6 +31,7 @@ const LengthConverter = () => {
           onChange={(e) => {
             setFromLength(e.target.value);
           }}
+          defaultValue={fromLength}
         >
           <option value="m">Meter</option>
           <option value="cm">Centimeter</option>
@@ -56,6 +57,7 @@ const LengthConverter = () => {
           onChange={(e) => {
             setToLength(e.target.value);
           }}
+          defaultValue={toLength}
         >
           <option value="m">Meter</option>
           <option value="cm">Centimeter</option>
@@ -74,6 +76,12 @@ const LengthConverter = () => {
       <button
         type="button"
         className="border py-2 px-5 rounded-lg bg-[red] text-white hover:bg-red-500"
+        onClick={() => {
+          setFromLength("");
+          setInputValue("");
+          setToLength("");
+          setResult("");
+        }}
       >
         Reset
       </button>
