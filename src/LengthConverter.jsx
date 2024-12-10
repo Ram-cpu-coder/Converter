@@ -21,7 +21,7 @@ const LengthConverter = () => {
     <div className="flex flex-col justify-center items-center">
       <h1 className="text-3xl font-bold pb-4">Length Converter</h1>
       <div className="flex flex-col justify-center items-center">
-        <label for="from" className="font-bold m-2">
+        <label htmlFor="from" className="font-bold m-2">
           From:
         </label>
 
@@ -45,9 +45,10 @@ const LengthConverter = () => {
           className="border rounded-lg m-4 p-2 text-center"
           onChange={handleLengthCalculation}
           value={inputValue}
+          placeholder="Enter the Value..."
         />
 
-        <label for="to" className="font-bold m-2">
+        <label htmlFor="to" className="font-bold m-2">
           To:
         </label>
 
@@ -68,7 +69,7 @@ const LengthConverter = () => {
           type="number"
           name=""
           id=""
-          className="rounded-lg m-4 p-2 text-center"
+          className=" m-4 p-2 text-center border-b-2"
           readOnly
           value={result}
         />
