@@ -7,26 +7,37 @@ const Calculator = () => {
   let lastOperator = "";
   const operators = "%/*-+";
 
-  const removeLastChar = () => {
-    setOutput((prev) => prev.slice(0, -1));
-  };
-
   const calculation = (val) => {
+    if (val == "X") {
+      val = "*";
+    }
     switch (val) {
-      case operators.includes(val):
+      case "+":
+      case "-":
+      case "/":
+      case "*":
+      case "%":
         const lastChar = output[output.length - 1];
         lastOperator = val;
         if (operators.includes(lastChar)) {
-          removeLastChar();
+          setOutput((prev) => {
+            return prev.slice(0, -1) + val;
+          });
+          break;
         }
+        setOutput((prev) => {
+          return prev + val;
+        });
+        break;
+
       case "=":
-        setOutput(eval(output));
+        setOutput(eval(output).toString());
         break;
       case "AC":
         setOutput("0.00");
         break;
       case "C":
-        removeLastChar();
+        setOutput((prev) => prev.slice(0, -1));
         break;
       case ".":
         const indexOfLastOperator = output.lastIndexOf(lastOperator);

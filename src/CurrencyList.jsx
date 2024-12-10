@@ -1,22 +1,26 @@
 import React from "react";
+import "./currency.css";
 
-const CurrencyList = ({ dataList }) => {
+const CurrencyList = ({ currencyValues }) => {
   return (
     <>
-      <div>Currency And their Values</div>
-      <table>
+      <h1>Currency And their Values</h1>
+      <table className="table">
         <thead className="font-bold">
           <tr>
-            <td className="italic">Currency Code</td>
+            <td>Code</td>
             <td>Value in USD</td>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            {/* ==================================== */}
-            {}
-            <td id="data"></td>
-          </tr>
+          {currencyValues.map((item) => {
+            return (
+              <tr>
+                <td>{item.code}</td>
+                <td>{item.value}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </>

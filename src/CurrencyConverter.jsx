@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CurrencyList from "./CurrencyList";
 
 const CurrencyConverter = () => {
@@ -29,14 +29,70 @@ const CurrencyConverter = () => {
     },
   };
 
+  let codeDataList = "";
+  let valueDataList = 0;
+  Object.keys(dataList).map((item) => {
+    codeDataList = item;
+    valueDataList = dataList[item].value;
+  });
+  console.log(codeDataList, valueDataList);
+
+  const [input, setInput] = useState("0");
+  const [code, setCode] = useState("");
+  const [currencyValues, setCurrencyValues] = useState([
+    { code: "USD", value: 1.0 },
+    { code: "EUR", value: 0.93 },
+    { code: "GBP", value: 0.81 },
+    { code: "JPY", value: 148.62 },
+    { code: "AUD", value: 1.55 },
+    { code: "CAD", value: 1.37 },
+    { code: "CHF", value: 0.89 },
+    { code: "CNY", value: 7.15 },
+    { code: "INR", value: 83.45 },
+    { code: "BRL", value: 5.17 },
+  ]);
+
+  const handleInputValue = (e) => {
+    setInput(e.target.value);
+  };
+  const conversion = () => {
+    const tempCurrencyList = Object.keys(dataList).map((item) => {
+      return {
+        code: item,
+        value: ((dataList[code].value * input) / dataList[item].value).toFixed(
+          2
+        ),
+      };
+    });
+
+    setCurrencyValues(tempCurrencyList);
+  };
+
+  const handleOnCurrencySelection = (e) => {
+    const value = e.target.value;
+    console.log(value);
+    setCode(value);
+  };
+
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center">
       <h1>Currency Converter</h1>
       <div className="">
-        <input type="number" name="" id="inputField" placeholder="Amount" />
+        <input
+          type="number"
+          name=""
+          id="inputField"
+          placeholder="Amount"
+          className="text-center border rounded py-2 px-3 m-3"
+          onChange={handleInputValue}
+        />
       </div>
       <div>
-        <select name="currency">
+        <select
+          name="currency"
+          className="border rounded px-3 py-1 bg-sky-500 text-white"
+          onChange={handleOnCurrencySelection}
+        >
           {Object.keys(dataList).map((item) => {
             return (
               <option value={dataList[item].code} key={dataList[item].code}>
@@ -45,11 +101,16 @@ const CurrencyConverter = () => {
             );
           })}
         </select>
+        <button
+          className="bg-blue-400 text-white border rounded px-3 py-1 m-2"
+          onClick={conversion}
+        >
+          Convert
+        </button>
       </div>
-      <button>Convert</button>
       <hr />
 
-      <CurrencyList dataList={dataList} />
+      <CurrencyList currencyValues={currencyValues} />
     </div>
   );
 };
