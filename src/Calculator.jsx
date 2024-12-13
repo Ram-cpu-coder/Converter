@@ -62,7 +62,7 @@ const Calculator = () => {
     }
   };
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 border rounded justify-center items-center p-3">
       <CalculatorDisplay output={output} />
       <CalculatorButton calculation={calculation} />
     </div>

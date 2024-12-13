@@ -107,7 +107,9 @@ const CalculatorButton = ({ calculation }) => {
       <button
         onClick={handleOnClick}
         className="box-shadow py-2.5 px-3 rounded-[50%] border"
-      ></button>
+      >
+        00
+      </button>
       <button
         onClick={handleOnClick}
         className="box-shadow py-2.5 px-3 rounded-[50%] border"
