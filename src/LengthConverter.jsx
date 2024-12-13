@@ -2,11 +2,17 @@ import React, { useState } from "react";
 import { calculateLength } from "./helpers/calculateLength";
 
 const LengthConverter = () => {
-  const [fromLength, setFromLength] = useState("m");
-  const [toLength, setToLength] = useState("cm");
+  const [fromLength, setFromLength] = useState("Meter");
+  const [toLength, setToLength] = useState("Centimeter");
   const [inputValue, setInputValue] = useState("");
   const [result, setResult] = useState("");
 
+  const handleSwapUnit = () => {
+    setFromLength(toLength);
+    setToLength(fromLength);
+    setResult("");
+    setInputValue("");
+  };
   const handleLengthCalculation = (e) => {
     console.log(e.target.value);
     setInputValue(e.target.value);
@@ -30,11 +36,11 @@ const LengthConverter = () => {
             onChange={(e) => {
               setFromLength(e.target.value);
             }}
-            defaultValue={fromLength}
+            value={fromLength}
           >
-            <option value="m">Meter</option>
-            <option value="cm">Centimeter</option>
-            <option value="km">Kilometer</option>
+            <option value="Meter">Meter</option>
+            <option value="Centimeter">Centimeter</option>
+            <option value="Kilometer">Kilometer</option>
           </select>
 
           <input
@@ -47,21 +53,22 @@ const LengthConverter = () => {
             placeholder="Enter the Value..."
           />
         </div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="size-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5"
-          />
-        </svg>
-
+        <button onClick={handleSwapUnit}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5"
+            />
+          </svg>
+        </button>
         <div>
           <label htmlFor="to" className="font-bold m-2"></label>
 
@@ -71,11 +78,12 @@ const LengthConverter = () => {
             onChange={(e) => {
               setToLength(e.target.value);
             }}
-            defaultValue={toLength}
+            value={toLength}
+            defaultValue={{ toLength }}
           >
-            <option value="m">Meter</option>
-            <option value="cm">Centimeter</option>
-            <option value="km">Kilometer</option>
+            <option value="Meter">Meter</option>
+            <option value="Centimeter">Centimeter</option>
+            <option value="Kilometer">Kilometer</option>
           </select>
 
           <input
@@ -83,7 +91,7 @@ const LengthConverter = () => {
             name=""
             id=""
             className=" m-4 p-2 text-center border-2 rounded-lg"
-            placeholder="Centimeter"
+            placeholder={toLength}
             readOnly
             value={result}
           />
@@ -93,10 +101,10 @@ const LengthConverter = () => {
         type="button"
         className="border py-2 px-5 rounded-lg bg-[red] text-white hover:bg-red-500"
         onClick={() => {
-          setFromLength("");
+          setFromLength("Meter");
           setInputValue("");
-          setToLength("");
-          setResult("");
+          setToLength("Centimeter");
+          setResult("0");
         }}
       >
         Reset

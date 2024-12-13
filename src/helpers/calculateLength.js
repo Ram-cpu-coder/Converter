@@ -1,12 +1,12 @@
 const getFactor = (type) => {
     switch (type) {
-        case "km":
+        case "Kilometer":
             return 1000;
             break;
-        case "m":
+        case "Meter":
             return 1
             break
-        case "cm":
+        case "Centimeter":
             return 1 / 100;
             break;
         default:
