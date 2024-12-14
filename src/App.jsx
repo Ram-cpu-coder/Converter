@@ -3,6 +3,7 @@ import "./App.css";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import CurrencyConverter from "./CurrencyConverter";
+import NotToDoList from "./NotToDoList";
 
 import LengthConverter from "./LengthConverter";
 import TemperatureConverter from "./TemperatureConverter";
@@ -39,6 +40,11 @@ function App() {
         <Tab eventKey="Calculator" title="Calculator">
           <div className="min-h-[90vh] flex flex-col justify-center items-center gap-4">
             <Calculator />
+          </div>
+        </Tab>
+        <Tab eventKey="NotToDoList" title="NotToDoList">
+          <div className="min-h-[90vh] flex flex-col justify-center items-center gap-4">
+            <NotToDoList />
           </div>
         </Tab>
       </Tabs>

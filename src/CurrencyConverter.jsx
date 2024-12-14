@@ -35,7 +35,6 @@ const CurrencyConverter = () => {
     codeDataList = item;
     valueDataList = dataList[item].value;
   });
-  console.log(codeDataList, valueDataList);
 
   const [input, setInput] = useState("0");
   const [code, setCode] = useState("");
@@ -70,7 +69,6 @@ const CurrencyConverter = () => {
 
   const handleOnCurrencySelection = (e) => {
     const value = e.target.value;
-    console.log(value);
     setCode(value);
   };
 

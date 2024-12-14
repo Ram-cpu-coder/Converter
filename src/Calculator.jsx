@@ -8,57 +8,61 @@ const Calculator = () => {
   const operators = "%/*-+";
 
   const calculation = (val) => {
-    if (val == "X") {
-      val = "*";
-    }
-    switch (val) {
-      case "+":
-      case "-":
-      case "/":
-      case "*":
-      case "%":
-        const lastChar = output[output.length - 1];
-        lastOperator = val;
-        if (operators.includes(lastChar)) {
+    try {
+      if (val == "X") {
+        val = "*";
+      }
+      switch (val) {
+        case "+":
+        case "-":
+        case "/":
+        case "*":
+        case "%":
+          const lastChar = output[output.length - 1];
+          lastOperator = val;
+          if (operators.includes(lastChar)) {
+            setOutput((prev) => {
+              return prev.slice(0, -1) + val;
+            });
+            break;
+          }
           setOutput((prev) => {
-            return prev.slice(0, -1) + val;
+            return prev + val;
           });
           break;
-        }
-        setOutput((prev) => {
-          return prev + val;
-        });
-        break;
 
-      case "=":
-        setOutput(eval(output).toString());
-        break;
-      case "AC":
-        setOutput("0.00");
-        break;
-      case "C":
-        setOutput((prev) => prev.slice(0, -1));
-        break;
-      case ".":
-        const indexOfLastOperator = output.lastIndexOf(lastOperator);
-        const lastNumberSet = output.slice(indexOfLastOperator);
+        case "=":
+          setOutput(eval(output).toString());
+          break;
+        case "AC":
+          setOutput("0.00");
+          break;
+        case "C":
+          setOutput((prev) => prev.slice(0, -1));
+          break;
+        case ".":
+          const indexOfLastOperator = output.lastIndexOf(lastOperator);
+          const lastNumberSet = output.slice(indexOfLastOperator);
 
-        //when there is operator
-        if (lastNumberSet.includes(".")) return;
-        //when there is no operator
-        if (!lastOperator && output.includes(".")) {
-          return;
-        }
-
-      default:
-        setOutput((prev) => {
-          if (parseInt(prev) == 0) {
-            return val;
-          } else {
-            return prev + val;
+          //when there is operator
+          if (lastNumberSet.includes(".")) return;
+          //when there is no operator
+          if (!lastOperator && output.includes(".")) {
+            return;
           }
-        });
-        break;
+
+        default:
+          setOutput((prev) => {
+            if (parseInt(prev) == 0) {
+              return val;
+            } else {
+              return prev + val;
+            }
+          });
+          break;
+      }
+    } catch (error) {
+      setOutput("Error");
     }
   };
   return (
