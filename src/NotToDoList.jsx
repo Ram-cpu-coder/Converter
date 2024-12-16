@@ -20,14 +20,21 @@ const NotToDoList = () => {
 
   const [TaskInput, setTaskInput] = useState("Task");
   const [HourInput, setHourInput] = useState("Hours");
-  const [showEntryList, setShowEntryList] = useState(false);
-  const [taskList, setTaskList] = useState([]);
+  const [showEntryList, setShowEntryList] = useState(true);
+  const [taskList, setTaskList] = useState([
+    {
+      id: randomIdGenerator(),
+      task: "Cook Food",
+      hour: 2,
+      type: "entry",
+    },
+  ]);
 
   const addTask = () => {
     const itemTaskList = {
       id: randomIdGenerator(),
-      task: { TaskInput },
-      hour: { HourInput },
+      task: TaskInput,
+      hour: HourInput,
       type: "entry",
     };
     setTaskList([...taskList, itemTaskList]);
