@@ -22,6 +22,10 @@ const NotToDoList = () => {
   const [TaskInput, setTaskInput] = useState("Task");
   const [HourInput, setHourInput] = useState("Hours");
   const [showEntryList, setShowEntryList] = useState(true);
+
+  const [badHour, setBadHour] = useState(0);
+  const [entryHours, setEntryHours] = useState(0);
+
   const [taskList, setTaskList] = useState([
     {
       id: randomIdGenerator(),
@@ -75,15 +79,18 @@ const NotToDoList = () => {
           showEntryList={showEntryList}
           swapTask={swapTask}
           del={del}
+          setEntryHours={setEntryHours}
         />
         <BadList
           taskList={taskList}
           showEntryList={showEntryList}
           swapTask={swapTask}
           del={del}
+          setBadHour={setBadHour}
+          badHour={badHour}
         />
       </div>
-      <NotToDoListResult />
+      <NotToDoListResult entryHours={entryHours} badHour={badHour} />
     </div>
   );
 };

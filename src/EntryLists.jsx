@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 
-const EntryLists = ({ taskList, swapTask, del }) => {
+const EntryLists = ({ taskList, swapTask, del, setEntryHours }) => {
   const entryList = taskList.filter((item) => item.type == "entry");
+  const GoodHours = entryList.map((item) => {
+    return item.hour;
+  });
+  const total = GoodHours.reduce((item, acc) => {
+    return item + acc;
+  }, 0);
 
+  setEntryHours(total);
   return (
     <div className="flex flex-col h-[auto] min-w-[50%]">
       <h1 className="text-center">Entry List</h1>

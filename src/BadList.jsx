@@ -1,9 +1,18 @@
 import React from "react";
 
-const BadList = ({ taskList, swapTask, del }) => {
+const BadList = ({ taskList, swapTask, del, setBadHour, badHour }) => {
   const badList = taskList.filter((item) => item.type == "bad");
+  const summationBadList = badList.map((item) => {
+    return item.hour;
+  });
+
+  const sum = summationBadList.reduce((item, acc) => {
+    return item + acc;
+  }, 0);
+  setBadHour(sum);
+
   return (
-    <div className="flex flex-col h-[auto] min-w-[50%]">
+    <div className="flex1 flex-col h-[auto] min-w-[50%]">
       <h1 className="text-center">Bad List</h1>
       <hr />
       <table className="hover:bg-gray-300 mb-2">
@@ -71,7 +80,7 @@ const BadList = ({ taskList, swapTask, del }) => {
         </tbody>
       </table>
       <div className="alert alert-success">
-        You could have saved <span id="badHour">0</span> hrs!
+        You could have saved {badHour} hrs!
       </div>
     </div>
   );
