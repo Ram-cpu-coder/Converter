@@ -1,21 +1,47 @@
-import React, { useState } from "react";
+import React from "react";
 
-const EntryLists = ({ taskList, swapTask, del }) => {
-  const entryList = taskList.filter((item) => item.type == "entry");
-
+const BadList = ({ taskList, swapTask, del }) => {
+  const badList = taskList.filter((item) => item.type == "bad");
   return (
     <div className="flex flex-col h-[auto] min-w-[50%]">
-      <h1 className="text-center">Entry List</h1>
+      <h1 className="text-center">Bad List</h1>
       <hr />
-      <table className="hover:bg-gray-300">
-        <tbody id="entry-list" className="flex flex-col">
-          {entryList.map((item, index) => {
+      <table className="hover:bg-gray-300 mb-2">
+        <tbody id="bad-list" className="flex flex-col">
+          {badList.map((item, index) => {
             return (
-              <tr className="flex items-center justify-between p-2">
-                <th className="text-lg">{index + 1}</th>
-                <td className="text-lg">{item.task}</td>
-                <td className="text-lg">{item.hour}</td>
+              <tr
+                className="flex items-center justify-between p-2"
+                key={item.id}
+              >
+                <th scope="row" className="fs-5">
+                  {index + 1}
+                </th>
+                <td className="fs-5">{item.task}</td>
+                <td className="fs-5">{item.hour}</td>
                 <td className="flex gap-2">
+                  <button
+                    type="button"
+                    className="btn btn-warning p-2"
+                    onClick={() => {
+                      swapTask(item.id);
+                    }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
+                      />
+                    </svg>
+                  </button>
                   <button
                     type="button"
                     className="btn btn-danger p-2"
@@ -38,36 +64,17 @@ const EntryLists = ({ taskList, swapTask, del }) => {
                       />
                     </svg>
                   </button>
-                  <button
-                    type="button"
-                    className="btn btn-success p-2"
-                    onClick={() => {
-                      swapTask(item.id);
-                    }}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="size-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-                      />
-                    </svg>
-                  </button>
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+      <div className="alert alert-success">
+        You could have saved <span id="badHour">0</span> hrs!
+      </div>
     </div>
   );
 };
 
-export default EntryLists;
+export default BadList;

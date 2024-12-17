@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import InputNotToDoList from "./InputNotToDoList";
 import EntryLists from "./EntryLists";
+import BadList from "./BadList";
 import NotToDoListResult from "./NotToDoListResult";
 
 const NotToDoList = () => {
@@ -41,7 +42,25 @@ const NotToDoList = () => {
     setShowEntryList(true);
     console.log("CLicked");
   };
-  console.log(taskList);
+
+  const swapTask = (id) => {
+    // deep copy
+    const tempTaskList = [...taskList];
+
+    // shallow copy
+    const task = tempTaskList.find((item) => item.id == id);
+
+    task.type = task.type === "entry" ? "bad" : "entry";
+
+    // send updated task list
+    setTaskList(tempTaskList);
+  };
+  const del = (id) => {
+    const tempDel = taskList.filter((item) => item.id !== id);
+    confirm("Are you sure, you want to delete this task from the list?") &&
+      setTaskList(tempDel);
+  };
+
   return (
     <div>
       <h1 className="text-center mb-4">Not To Do List</h1>
@@ -50,7 +69,20 @@ const NotToDoList = () => {
         setHourInput={setHourInput}
         addTask={addTask}
       />
-      <EntryLists taskList={taskList} showEntryList={showEntryList} />
+      <div className="flex justify-between items-start px-5 gap-2">
+        <EntryLists
+          taskList={taskList}
+          showEntryList={showEntryList}
+          swapTask={swapTask}
+          del={del}
+        />
+        <BadList
+          taskList={taskList}
+          showEntryList={showEntryList}
+          swapTask={swapTask}
+          del={del}
+        />
+      </div>
       <NotToDoListResult />
     </div>
   );
