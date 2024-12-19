@@ -19,9 +19,8 @@ const NotToDoList = () => {
     return randomId;
   };
 
-  const [TaskInput, setTaskInput] = useState("Task");
-  const [HourInput, setHourInput] = useState("Hours");
-  const [showEntryList, setShowEntryList] = useState(true);
+  const [TaskInput, setTaskInput] = useState("");
+  const [HourInput, setHourInput] = useState("");
 
   const [badHour, setBadHour] = useState(0);
   const [entryHours, setEntryHours] = useState(0);
@@ -42,20 +41,23 @@ const NotToDoList = () => {
       hour: HourInput,
       type: "entry",
     };
-    setTaskList([...taskList, itemTaskList]);
-    setShowEntryList(true);
+    TaskInput !== "" && HourInput !== ""
+      ? setTaskList([...taskList, itemTaskList])
+      : alert("Please Enter the values");
     console.log("CLicked");
   };
-
+  const addItemToList = () => {
+    addTask();
+    setHourInput("");
+    setTaskInput("");
+  };
   const swapTask = (id) => {
     // deep copy
     const tempTaskList = [...taskList];
 
     // shallow copy
     const task = tempTaskList.find((item) => item.id == id);
-
     task.type = task.type === "entry" ? "bad" : "entry";
-
     // send updated task list
     setTaskList(tempTaskList);
   };
@@ -66,31 +68,37 @@ const NotToDoList = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-center mb-4">Not To Do List</h1>
-      <InputNotToDoList
-        setTaskInput={setTaskInput}
-        setHourInput={setHourInput}
-        addTask={addTask}
-      />
-      <div className="flex justify-between items-start px-5 gap-2">
-        <EntryLists
-          taskList={taskList}
-          showEntryList={showEntryList}
-          swapTask={swapTask}
-          del={del}
-          setEntryHours={setEntryHours}
-        />
-        <BadList
-          taskList={taskList}
-          showEntryList={showEntryList}
-          swapTask={swapTask}
-          del={del}
-          setBadHour={setBadHour}
-          badHour={badHour}
-        />
+    <div className="flex flex-col justify-between">
+      <div className="flex  min-w-[70vw] gap-5 md:flex-col sm:flex-col md:items-center sm:items-center">
+        <div className="flex flex-col items-center min-h-[50vh] min-w-[30%] w-[40%]">
+          <h1 className="text-center mb-4">Not To Do List</h1>
+          <InputNotToDoList
+            setTaskInput={setTaskInput}
+            TaskInput={TaskInput}
+            HourInput={HourInput}
+            setHourInput={setHourInput}
+            addItemToList={addItemToList}
+          />
+          <NotToDoListResult entryHours={entryHours} badHour={badHour} />
+        </div>
+        <div className="flex flex-col items-center min-h-[50vh] min-w-[60%] md:w-[100%] sm:w-[100%]">
+          <div className="flex justify-between px-5 gap-4 md:w-[100%]">
+            <EntryLists
+              taskList={taskList}
+              swapTask={swapTask}
+              del={del}
+              setEntryHours={setEntryHours}
+            />
+            <BadList
+              taskList={taskList}
+              swapTask={swapTask}
+              del={del}
+              setBadHour={setBadHour}
+              badHour={badHour}
+            />
+          </div>
+        </div>
       </div>
-      <NotToDoListResult entryHours={entryHours} badHour={badHour} />
     </div>
   );
 };

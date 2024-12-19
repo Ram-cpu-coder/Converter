@@ -6,6 +6,7 @@ import CurrencyConverter from "./CurrencyConverter";
 import NotToDoList from "./NotToDoList";
 
 import LengthConverter from "./LengthConverter";
+import MassCalculator from "./MassCalculator";
 import TemperatureConverter from "./TemperatureConverter";
 import Calculator from "./Calculator";
 
@@ -22,6 +23,11 @@ function App() {
         <Tab eventKey="lengthConverter" title="Length Converter">
           <div className="min-h-[90vh] flex flex-col justify-center items-center gap-4">
             <LengthConverter />
+          </div>
+        </Tab>
+        <Tab eventKey="massCalculator" title="Mass Converter">
+          <div className="min-h-[90vh] flex flex-col justify-center items-center gap-4">
+            <MassCalculator />
           </div>
         </Tab>
 

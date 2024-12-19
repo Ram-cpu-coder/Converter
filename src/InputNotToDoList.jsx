@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-const InputNotToDoList = ({ setTaskInput, setHourInput, addTask }) => {
+const InputNotToDoList = ({
+  setTaskInput,
+  setHourInput,
+  addItemToList,
+  HourInput,
+  TaskInput,
+}) => {
   const handleInputTask = (e) => {
     setTaskInput(e.target.value);
   };
@@ -15,6 +21,7 @@ const InputNotToDoList = ({ setTaskInput, setHourInput, addTask }) => {
           type="email"
           className="form-control"
           id="task"
+          value={TaskInput}
           placeholder="Task"
           onChange={handleInputTask}
         />
@@ -24,6 +31,7 @@ const InputNotToDoList = ({ setTaskInput, setHourInput, addTask }) => {
           type="number"
           className="form-control"
           id="hour"
+          value={HourInput}
           placeholder="Hours"
           onChange={handleInputHours}
         />
@@ -32,9 +40,9 @@ const InputNotToDoList = ({ setTaskInput, setHourInput, addTask }) => {
         type="button"
         id="addTask"
         className="btn btn-primary"
-        onClick={addTask}
+        onClick={addItemToList}
       >
-        Add New Task
+        Add Task
       </button>
     </div>
   );

@@ -12,21 +12,21 @@ const BadList = ({ taskList, swapTask, del, setBadHour, badHour }) => {
   setBadHour(sum);
 
   return (
-    <div className="flex1 flex-col h-[auto] min-w-[50%]">
+    <div className="flex flex-col justify-strech min-h-[300px] min-w-[50%]">
       <h1 className="text-center">Bad List</h1>
       <hr />
-      <table className="hover:bg-gray-300 mb-2">
+      <table className="mb-2 min-h-[60px] min-w-[100%]">
         <tbody id="bad-list" className="flex flex-col">
           {badList.map((item, index) => {
             return (
               <tr
-                className="flex items-center justify-between p-2"
+                className="flex items-center justify-between p-2 border hover:bg-gray-300"
                 key={item.id}
               >
                 <th scope="row" className="fs-5">
                   {index + 1}
                 </th>
-                <td className="fs-5">{item.task}</td>
+                <td className="fs-5 max-w-[100px]">{item.task}</td>
                 <td className="fs-5">{item.hour}</td>
                 <td className="flex gap-2">
                   <button
@@ -79,7 +79,7 @@ const BadList = ({ taskList, swapTask, del, setBadHour, badHour }) => {
           })}
         </tbody>
       </table>
-      <div className="alert alert-success">
+      <div className="min-w-[100%] alert alert-success ">
         You could have saved {badHour} hrs!
       </div>
     </div>
