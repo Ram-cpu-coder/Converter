@@ -1,24 +1,32 @@
 import React, { useRef, useState } from "react";
+import { massCalculatorOperation } from "./helpers/CalculateMass";
 
 const MassCalculator = () => {
-  const [toUnit, setToUnit] = useState("");
+  const [toUnit, setToUnit] = useState("To");
+  const [fromUnit, setFromUnit] = useState("From");
   const [fromInput, setFromInput] = useState("");
-  const [fromUnit, setFromUnit] = useState("");
+  const [toInput, setToInput] = useState("");
+
   const fromRef = useRef("");
   const toRef = useRef("");
 
-  const handleFromUnitChange = () => {
-    setFromUnit(fromRef.current.value);
+  const fromInputRef = useRef("");
+  const toInputRef = useRef("");
+
+  const handleFromChange = () => {
+    setFromInput(fromInputRef.current.value);
+    const value = fromInputRef.current.value;
+    const output = massCalculatorOperation(fromUnit, toUnit, value);
+    setToInput(output);
   };
-  const handleToUnitChange = () => {
-    setToUnit(toRef.current.value);
-  };
-  console.log("From", fromRef.current.value);
-  console.log("To", toRef.current.value);
   const handleSwapOnClick = () => {
     setToUnit(fromUnit);
     setFromUnit(toUnit);
+
+    setToInput(fromInput);
+    setFromInput(toInput);
   };
+
   return (
     <div className="flex flex-col justify-center items-center">
       <h1 className="mb-5">Mass Calculator</h1>
@@ -28,7 +36,10 @@ const MassCalculator = () => {
             name="From"
             id="From"
             ref={fromRef}
-            onChange={handleFromUnitChange}
+            onChange={() => {
+              setFromUnit(fromRef.current.value);
+            }}
+            value={fromUnit}
           >
             <option value="">Choose Mass unit</option>
             <option value="kg">Kilogram</option>
@@ -42,6 +53,9 @@ const MassCalculator = () => {
           id="from"
           className="border rounded-lg p-2"
           placeholder={fromUnit}
+          ref={fromInputRef}
+          onChange={handleFromChange}
+          value={fromInput}
         />
       </div>
       <svg
@@ -62,7 +76,15 @@ const MassCalculator = () => {
 
       <div className="to flex justify-center items-center gap-3 m-2">
         <label htmlFor="to">
-          <select name="To" id="To" ref={toRef} onChange={handleToUnitChange}>
+          <select
+            name="To"
+            id="To"
+            ref={toRef}
+            onChange={() => {
+              setToUnit(toRef.current.value);
+            }}
+            value={toUnit}
+          >
             <option value="">Choose Mass unit</option>
             <option value="kg">Kilogram</option>
             <option value="gm">Gram</option>
@@ -75,8 +97,25 @@ const MassCalculator = () => {
           id="to"
           className="border rounded-lg p-2"
           placeholder={toUnit}
+          ref={toInputRef}
+          onChange={() => {
+            setToInput(toInputRef.current.value);
+          }}
+          value={toInput}
+          readOnly
         />
       </div>
+      <button
+        className="border px-4 py-1 rounded-lg bg-[red] text-white m-3"
+        onClick={() => {
+          setFromInput("");
+          setToInput("");
+          setFromUnit("");
+          setToUnit("");
+        }}
+      >
+        Clear All
+      </button>
     </div>
   );
 };
