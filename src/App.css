@@ -1,0 +1,12 @@
+.toast-message{
+    animation: slideRightOut 0.5s forwards;
+}
+@keyframes slideRightOut {
+    0%{
+        right: 0;
+
+    }
+    100%{
+        right: -100%;
+    }
+}
