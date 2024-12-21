@@ -4,7 +4,7 @@ import ServiceCard from "./ServiceCard";
 const Services = () => {
   return (
     <div className="flex justify-center items-center">
-      <div className="flex flex-col justify-center items-center  min-h-[90vh] w-[80vw]">
+      <div className="flex flex-col justify-center items-center min-h-[90vh] w-[80vw]">
         <h1>Services</h1>
         <div className="flex flex-wrap justify-center items-center  gap-4 ">
           <ServiceCard title={"Length Converter"} link={"/lengthConverter"} />
