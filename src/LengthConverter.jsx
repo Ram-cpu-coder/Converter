@@ -25,7 +25,7 @@ const LengthConverter = () => {
 
   return (
     <div className="flex flex-col justify-center items-center h-[90vh]">
-      <h1 className="text-3xl font-bold pb-4">Length Converter</h1>
+      <h1 className="text-5xl font-bold pb-4">Length Converter</h1>
       <div className="flex flex-col justify-center items-center">
         <div>
           <label htmlFor="from" className="font-bold m-2"></label>

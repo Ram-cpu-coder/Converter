@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import NavBar from "./NavBar";
 import Home from "./Home";
 import Services from "./Services";
+import Contact from "./Contact";
 
 import CurrencyConverter from "./CurrencyConverter";
 import NotToDoList from "./NotToDoList";
@@ -24,6 +25,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<Contact />} />
+
           <Route path="/lengthConverter" element={<LengthConverter />} />
           <Route path="/massCalculator" element={<MassCalculator />} />
           <Route

@@ -10,3 +10,11 @@
         right: -100%;
     }
 }
+
+.wrapper{
+    background: url('/assets/about_bg.webp');
+    backdrop-filter: blur(9px);
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
