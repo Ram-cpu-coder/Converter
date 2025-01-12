@@ -34,7 +34,9 @@ const TemperatureConverter = () => {
   return (
     <div className="flex justify-center items-center">
       <div className="flex flex-col justify-center items-center gap-4 min-h-[90vh] w-[80vw]">
-        <h2 className="font-bold text-5xl">Temperature Converter</h2>
+        <h2 className="font-bold text-5xl text-center">
+          Temperature Converter
+        </h2>
         <div className="flex flex-col justify-center items-center">
           <div className="flex flex-col justify-center items-between gap-3 border p-3">
             <div className="flex justify-between items-center gap-3">

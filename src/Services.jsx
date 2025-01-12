@@ -5,7 +5,7 @@ const Services = () => {
   return (
     <div className="flex justify-center items-center">
       <div className="flex flex-col justify-center items-center min-h-[90vh] w-[80vw]">
-        <h1 className="font-bold text-5xl m-3">Services</h1>
+        <h1 className="font-bold text-5xl m-3 mb-5">Converters</h1>
         <div className="flex flex-wrap justify-center items-center  gap-4 ">
           <ServiceCard title={"Length Converter"} link={"/lengthConverter"} />
           <ServiceCard title={"Mass Converter"} link={"/massCalculator"} />

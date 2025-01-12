@@ -2,7 +2,7 @@ import React from "react";
 
 const MovedToast = ({ movedToast, taskModified }) => {
   return (
-    <div className="fixed top-12 end-0">
+    <div className="fixed top-6 end-0">
       {movedToast && (
         <div
           id="toast-success"

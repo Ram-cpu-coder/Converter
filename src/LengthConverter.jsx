@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { calculateLength } from "./helpers/calculateLength";
 
 const LengthConverter = () => {
@@ -13,6 +13,7 @@ const LengthConverter = () => {
     setResult("");
     setInputValue("");
   };
+
   const handleLengthCalculation = (e) => {
     console.log(e.target.value);
     setInputValue(e.target.value);

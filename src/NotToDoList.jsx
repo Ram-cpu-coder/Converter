@@ -95,7 +95,7 @@ const NotToDoList = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="flex flex-col justify-center items-center min-h-[90vh] min-w-[70vw] gap-3">
+      <div className="flex flex-col justify-center items-center min-h-[90vh] min-w-[70vw] gap-3 relative">
         <div className="flex flex-col items-center h-[auto] min-w-[30%] w-[50%]">
           <h1 className="text-center mb-4 text-5xl font-bold">
             Not To Do List

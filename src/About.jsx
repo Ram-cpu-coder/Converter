@@ -2,12 +2,11 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="flex flex-col justify-center items-center h-[90vh]">
-      <h1 className="text-5xl font-bold p-4">About Us</h1>
-      <p className="text-sky-600 text-2xl">Fast, Easy and Accurate</p>
-      <p className="text-sky-600 text-2xl">Simple Tools</p>
-      <p className="text-sky-600 text-2xl">Hassle Free Conversions</p>
-      <p className="text-red-600 text-2xl font-bold">Try us Today!</p>
+    <div className="flex flex-col justify-center items-center h-[90vh] gap-5 text-sky-600 text-5xl font-bold">
+      {/* <h1 className="text-5xl font-bold p-4">About Us</h1> */}
+      <p>Fast, Easy and Accurate</p>
+      <p>Simple Tools</p>
+      <p>Hassle Free Conversions</p>
     </div>
   );
 };

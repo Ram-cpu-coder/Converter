@@ -66,9 +66,11 @@ const Calculator = () => {
     }
   };
   return (
-    <div className="flex flex-col gap-2 justify-center items-center p-3 h-[90vh]">
-      <CalculatorDisplay output={output} />
-      <CalculatorButton calculation={calculation} />
+    <div className="flex justify-center items-center h-[90vh]">
+      <div className="flex flex-col gap-2 justify-center items-center px-3 py-5 border-2 shadow-lg rounded-lg">
+        <CalculatorDisplay output={output} />
+        <CalculatorButton calculation={calculation} />
+      </div>
     </div>
   );
 };

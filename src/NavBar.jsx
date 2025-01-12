@@ -1,10 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { Navbar } from "flowbite-react";
 
 const NavBar = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleOnResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleOnResize);
+
+    return () => {
+      window.removeEventListener("resize", handleOnResize);
+    };
+  }, []);
+
   return (
-    <Navbar fluid rounded>
+    <Navbar fluid rounded className="relative">
       <Navbar.Brand href="/">
         <img
           src="/assets/logo.png"
@@ -16,13 +28,24 @@ const NavBar = () => {
         </span>
       </Navbar.Brand>
       <Navbar.Toggle />
-      <Navbar.Collapse>
-        <Navbar.Link href="/">Home</Navbar.Link>
 
-        <Navbar.Link href="/services">Services</Navbar.Link>
-        <Navbar.Link href="/about">About</Navbar.Link>
-        <Navbar.Link href="/contact">Contact</Navbar.Link>
-      </Navbar.Collapse>
+      {windowWidth < 768 ? (
+        <Navbar.Collapse className="absolute top-[55px] left-0 border z-50 bg-[white]">
+          <Navbar.Link href="/">Home</Navbar.Link>
+
+          <Navbar.Link href="/services">Converters</Navbar.Link>
+          <Navbar.Link href="/about">About</Navbar.Link>
+          <Navbar.Link href="/contact">Contact</Navbar.Link>
+        </Navbar.Collapse>
+      ) : (
+        <Navbar.Collapse>
+          <Navbar.Link href="/">Home</Navbar.Link>
+
+          <Navbar.Link href="/services">Converters</Navbar.Link>
+          <Navbar.Link href="/about">About</Navbar.Link>
+          <Navbar.Link href="/contact">Contact</Navbar.Link>
+        </Navbar.Collapse>
+      )}
     </Navbar>
   );
 };

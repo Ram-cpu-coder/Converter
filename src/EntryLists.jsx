@@ -18,12 +18,16 @@ const EntryLists = ({ taskList, swapTask, del, setEntryHours }) => {
       <hr className="pb-3" />
       <table className="min-h-[60px] h-[auto] w-[100%]">
         <tbody id="entry-list" className="flex flex-col">
-          {entryList != [] ? (
+          {entryList.length === 0 ? (
+            <div className="flex justify-center items-center h-[50px]">
+              No data Found
+            </div>
+          ) : (
             entryList.map((item, index) => {
               return (
-                <tr className="flex items-center justify-between p-2 hover:bg-gray-300  ">
+                <tr className="flex items-center justify-between p-2 hover:bg-gray-300 h-[auto] ">
                   <th className="text-lg">{index + 1}</th>
-                  <td className=" border-0 text-lg max-w-[100px] h-[30px] break-words text-start">
+                  <td className="border-0 text-lg max-w-[100px] h-[auto] break-words text-start">
                     {item.task}
                   </td>
                   <td className="border-0 text-lg">{item.hour}</td>
@@ -76,8 +80,6 @@ const EntryLists = ({ taskList, swapTask, del, setEntryHours }) => {
                 </tr>
               );
             })
-          ) : (
-            <tr className="border text-5xl">No data</tr>
           )}
         </tbody>
       </table>

@@ -73,44 +73,51 @@ const CurrencyConverter = () => {
   };
 
   return (
-    <div className="flex justify-center items-center border">
-      <div className="flex justify-between items-center w-[70vw] h-[90vh] min-h-[90vh]">
-        <div className="flex flex-col justify-center items-center gap-2  w-[auto]">
-          <h1 className="text-5xl font-bold">Currency Converter</h1>
-          <div className="">
-            <input
-              type="number"
-              name=""
-              id="inputField"
-              placeholder="Amount"
-              className="text-center border rounded py-2 px-3 m-3"
-              onChange={handleInputValue}
-            />
+    <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center">
+        <div className="flex md:flex-row sm:flex-row flex-col md:justify-center md:items-center justify-center items-center w-[100%] h-[auto] min-h-[90vh]">
+          <div className="flex flex-col justify-center items-center gap-2 w-[auto]">
+            <h1 className="text-5xl font-bold text-center">
+              Currency Converter
+            </h1>
+            <div className="">
+              <input
+                type="number"
+                name=""
+                id="inputField"
+                placeholder="Amount"
+                className="text-center border rounded py-2 px-3 m-3"
+                onChange={handleInputValue}
+              />
+            </div>
+            <div className="flex flex-col justify-center items-center">
+              <select
+                name="currency"
+                className="rounded px-3 py-1 bg-sky-500 text-white"
+                onChange={handleOnCurrencySelection}
+              >
+                {Object.keys(dataList).map((item) => {
+                  return (
+                    <option
+                      value={dataList[item].code}
+                      key={dataList[item].code}
+                    >
+                      {item}
+                    </option>
+                  );
+                })}
+              </select>
+              <button
+                className="bg-blue-400 text-white rounded px-3 py-1 m-2"
+                onClick={conversion}
+              >
+                Convert
+              </button>
+            </div>
+            <hr />
           </div>
-          <div className="flex flex-col justify-center items-center">
-            <select
-              name="currency"
-              className="rounded px-3 py-1 bg-sky-500 text-white"
-              onChange={handleOnCurrencySelection}
-            >
-              {Object.keys(dataList).map((item) => {
-                return (
-                  <option value={dataList[item].code} key={dataList[item].code}>
-                    {item}
-                  </option>
-                );
-              })}
-            </select>
-            <button
-              className="bg-blue-400 text-white rounded px-3 py-1 m-2"
-              onClick={conversion}
-            >
-              Convert
-            </button>
-          </div>
-          <hr />
+          <CurrencyList currencyValues={currencyValues} />
         </div>
-        <CurrencyList currencyValues={currencyValues} />
       </div>
     </div>
   );

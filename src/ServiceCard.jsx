@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ServiceCard = ({ title, link }) => {
   return (
-    <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 min-h-[250px] h-[250px] w-[300px] overflow-hidden">
+    <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 min-h-[250px] h-[250px] w-full overflow-hidden">
       <Link to={link}>
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {title}

@@ -2,7 +2,7 @@ import React from "react";
 
 const DelToast = ({ delToast, taskModified }) => {
   return (
-    <div className="fixed top-12 end-0">
+    <div className="fixed top-6 end-0">
       {delToast && (
         <div
           id="toast-danger"
