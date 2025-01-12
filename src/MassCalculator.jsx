@@ -30,7 +30,7 @@ const MassCalculator = () => {
   return (
     <div className="flex justify-center items-center">
       <div className="flex flex-col justify-center items-center min-h-[90vh] w-[80vw]">
-        <h1 className="mb-5 font-bold text-5xl">Mass Calculator</h1>
+        <h1 className="mb-5 font-bold text-5xl text-center">Mass Calculator</h1>
         <div className="from flex justify-center items-center gap-3 m-2">
           <label htmlFor="from">
             <select

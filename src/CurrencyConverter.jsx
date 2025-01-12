@@ -74,8 +74,8 @@ const CurrencyConverter = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="flex justify-center items-center">
-        <div className="flex md:flex-row sm:flex-row flex-col md:justify-center md:items-center justify-center items-center w-[100%] h-[auto] min-h-[90vh]">
+      <div className="flex justify-center items-center border">
+        <div className="flex md:flex-row sm:flex-row flex-col md:justify-center md:items-center justify-center items-center w-[100%] p-5 h-[auto] min-h-[90vh]">
           <div className="flex flex-col justify-center items-center gap-2 w-[auto]">
             <h1 className="text-5xl font-bold text-center">
               Currency Converter
